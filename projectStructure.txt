@@ -1,0 +1,17 @@
+Project : Travel Booking SCD2 Data Warehouse (Industrial Project)
+
+Tech Stack: Databricks, PySpark, Delta Lake, Unity Catalog, PyDeequ (For Data Quality Checks), Databricks Volumes, Databricks Workflows
+
+→ Bronze Ingestion from Volumes: Parameterized daily loads for bookings and customers with audit columns and idempotent appends
+
+→ Data Quality (PyDeequ): Completeness, validity, non-negativity, uniqueness checks with results persisted to ops.dq_results
+
+→ SCD2 Customer Dimension: Surrogate keys, effective/expiry dates, is_current flag, automated MERGE close-and-insert pattern
+
+→ Booking Fact (Daily Grain): Dimension surrogate key enrichment, daily aggregates (amount, quantity), safe upserts via MERGE
+
+→ Performance & Ops: OPTIMIZE Z-ORDER, VACUUM retention, ANALYZE stats, run logs, and operational schemas
+
+→ Analytics SQL: Daily revenue by type (idempotent delete-then-insert), Customer 360 view, DQ summaries
+
+→ Workflow Orchestration: Notebook-driven pipeline + SQL workflow for analytics with parameterized arrival_date
